@@ -28,8 +28,6 @@ namespace Akashic.Utilities.Test.Extensions.Collections
             Assert.IsFalse(array.Exists(x => x.Name == "Strawberry"));
         }
 
-        #region Test Suite : JoinToString
-
         [Test]
         public void JoinToStringTest_UserDefineObject()
         {
@@ -38,19 +36,5 @@ namespace Akashic.Utilities.Test.Extensions.Collections
 
             Assert.AreEqual(expected, actual);
         }
-
-        [Test]
-        public void JoinToStringTest_Null()
-        {
-            string[]? array = null;
-            var expected = "";
-#pragma warning disable CS8604 // Possible null reference argument.
-            var actual = array.JoinToString() ?? string.Empty;
-#pragma warning restore CS8604 // Possible null reference argument.
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        #endregion
     }
 }
