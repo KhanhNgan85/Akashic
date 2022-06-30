@@ -57,7 +57,6 @@ namespace Akashic.Utilities.Extensions.Collection
             return result;
         }
 
-        //
 
         /// <summary>
         /// Usage:
@@ -86,6 +85,7 @@ namespace Akashic.Utilities.Extensions.Collection
             return table;
         }
 
+
         /// <summary>
         /// Usage: 
         ///     _array.JoinToString();
@@ -97,6 +97,7 @@ namespace Akashic.Utilities.Extensions.Collection
                 string.Join($"{delimiters}", source) : string.Empty;
             return result;
         }
+
 
         /// <summary>
         /// Usage: 
@@ -118,9 +119,10 @@ namespace Akashic.Utilities.Extensions.Collection
             return -1;
         }
 
+
         /// <summary>
         /// Usage: 
-        ///     _list.IndexOf(x => x.property1 == value1);
+        ///     _list.IndexOf(x => x.property == value);
         /// 
         /// Return: 
         ///     -1 if not exists 
@@ -141,6 +143,11 @@ namespace Akashic.Utilities.Extensions.Collection
             return -1;
         }
 
+
+        /// <summary>
+        /// Usage:
+        ///     _list.Exists(x => x.property == value)
+        /// </summary> 
         public static bool Exists<T>(this IEnumerable<T> source, Predicate<T> predicate)
         {
             foreach (T item in source)
@@ -152,6 +159,11 @@ namespace Akashic.Utilities.Extensions.Collection
             return false;
         }
 
+
+        /// <summary>
+        /// Usage:
+        ///     _list.IsValid()
+        /// </summary> 
         public static bool IsValid<T>(this IEnumerable<T> source)
         {
             return source != null && source.Any();
