@@ -40,9 +40,6 @@ namespace Akashic.Utilities.Test.Extensions.Collections
             Assert.AreEqual("Strawberry", page2.ElementAt(0).Name);
         }
 
-        #region Test Suite : DistinctBy
-
-
         [Test]
         [Obsolete]
         public void DistinctWithTest()
@@ -52,8 +49,6 @@ namespace Akashic.Utilities.Test.Extensions.Collections
             Assert.AreEqual(6, uniqueCollection.Count());
         }
 
-        #endregion
-
         [Test]
         public void CopyToDataTableTest()
         {
@@ -61,7 +56,6 @@ namespace Akashic.Utilities.Test.Extensions.Collections
             _table.Columns.Add("Id", typeof(int));
             _table.Columns.Add("Name", typeof(string));
             _table.Columns.Add("Group", typeof(int));
-
             _table.Rows.Add(11, "Watermelon", 3);
             _table.Rows.Add(12, "Mango", 3);
             _table.Rows.Add(13, "Strawberry", 1);
@@ -134,7 +128,7 @@ namespace Akashic.Utilities.Test.Extensions.Collections
         [Test]
         public void JoinToStringTest_Null()
         {
-            List<string> list = null;
+            var list = new List<string>();
             var expected = "";
 #pragma warning disable CS8604 // Possible null reference argument.
             var actual = list.JoinToString() ?? string.Empty;
@@ -153,7 +147,7 @@ namespace Akashic.Utilities.Test.Extensions.Collections
         }
 
         [Test]
-        public void GetRandom()
+        public void GetRandomTest()
         {
             var items = _list.GetRandom(2);
 
@@ -161,6 +155,16 @@ namespace Akashic.Utilities.Test.Extensions.Collections
             Assert.AreEqual(2, items.Count());
             Assert.IsTrue(_list.Exists(x => x.Name == items.ElementAt(0).Name));
             Assert.IsTrue(_list.Exists(x => x.Name == items.ElementAt(1).Name));
+        }
+
+        [Test]
+        public void IsValidTest()
+        {
+            var validList = _list;
+            Assert.IsTrue(validList.IsValid());
+
+            var invalidList = new List<string>();
+            Assert.IsFalse(invalidList.IsValid());
         }
     }
 }
